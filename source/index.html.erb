@@ -1,0 +1,72 @@
+---
+title: Address book
+---
+
+<div>
+
+  <div class="search-block">
+    <form ng-submit="dashboard.filterContacts(filterForm)" class="navbar-form">
+      <div class="form-group">
+        <select ng-init="filterForm.groupId=0" ng-model="filterForm.groupId" ng-options="gr.id as gr.name for gr in dashboard.filterGroups" class="form-control"></select>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="First or Last Name" ng-model="filterForm.firstOrLastName" class="form-control" />
+      </div>
+      <divform-group>
+        <input type="submit" value="Filter" class="form-control" />
+      </divform-group>
+      <a ng-click="dashboard.filterReset()" href="#" class="btn btn-default">Reset</a>
+    </form>
+  </div>
+
+
+
+  <div class="actions-block" ng-class="{ hidden: dashboard.showAddContact() }">
+    <a class="btn btn-primary" ng-click="dashboard.openAddContact()" href="#">Add contact</a>
+  </div>
+
+  <div ng-class="{ hidden: !dashboard.showAddContact() }">
+    <form ng-submit="dashboard.addContact(newContact)" >
+      <input required="true" type="text" placeholder="First Name" ng-model="newContact.firstName" />
+      <input required="true" type="text" placeholder="Last Name" ng-model="newContact.lastName" />
+      <input type="number" min="0" max="99" step="1" placeholder="Age" ng-model="newContact.age" />
+
+      <select ng-init="newContact.groupId=0" ng-model="newContact.groupId" ng-options="gr.id as gr.name for gr in dashboard.contactGroups"></select>
+
+      <input type="text" placeholder="Group Name" ng-model="newContact.newGroupName" ng-show="newContact.groupId === 0" />
+
+      <input type="submit" value="Add" />
+      <a class="btn btn-default" ng-click="dashboard.closeAddContact()" href="#">Cancel</a>
+    </form>
+  </div>
+
+
+  <div class="list-group">
+    <div ng-repeat="contact in dashboard.contacts" class="list-group-item">
+      <div class="clearfix">
+        <div class="pull-left">
+          <span>{{contact.firstName}}</span>
+          <span>{{contact.lastName}}</span>
+          <span>{{contact.age}}</span>
+          <div class="label label-primary">Group: {{dashboard.getGroupById(contact.groupId).name}}</div>
+        </div>
+        <div class="pull-right">
+          <a class="btn btn-default" ng-click="dashboard.openEditContact(contact)" href="#">Edit</a>
+          <a class="btn btn-default" ng-click="dashboard.deleteContact(contact)" href="#">Delete</a>
+        </div>
+      </div>
+      <div ng-class="{ hidden: dashboard.hideEditContact(contact) }">
+        <form ng-submit="dashboard.editContact(contact)" >
+          <input required="true" type="text" placeholder="First Name" ng-model="contact.firstName" />
+          <input required="true" type="text" placeholder="Last Name" ng-model="contact.lastName" />
+          <input type="number" min="0" max="99" step="1" placeholder="Age" ng-model="contact.age" />
+
+          <select ng-model="contact.groupId" ng-options="gr.id as gr.name for gr in dashboard.editGroups"></select>
+
+          <input type="submit" value="Edit" />
+          <a ng-click="dashboard.closeEditContact(contact)" href="#">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><!-- .dashboard -->
