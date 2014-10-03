@@ -4,8 +4,8 @@ title: Address book
 
 <div>
 
-  <div class="search-block">
-    <form ng-submit="dashboard.filterContacts(filterForm)" class="navbar-form">
+  <div class="actions-block clearfix">
+    <form ng-submit="dashboard.filterContacts(filterForm)" class="form-inline">
       <div class="form-group">
         <select ng-init="filterForm.groupId=0" ng-model="filterForm.groupId" ng-options="gr.id as gr.name for gr in dashboard.filterGroups" class="form-control"></select>
       </div>
@@ -17,15 +17,13 @@ title: Address book
       </div>
       <a ng-click="dashboard.filterReset()" href="#" class="btn btn-default">Reset</a>
     </form>
+
+    <div class="add-block" ng-class="{ hidden: dashboard.showAddContact() }">
+      <a class="btn btn-primary" ng-click="dashboard.openAddContact()" href="#">Add contact</a>
+    </div>
   </div>
 
-
-
-  <div class="actions-block" ng-class="{ hidden: dashboard.showAddContact() }">
-    <a class="btn btn-primary" ng-click="dashboard.openAddContact()" href="#">Add contact</a>
-  </div>
-
-  <div class="add-block"ng-class="{ hidden: !dashboard.showAddContact() }">
+  <div class="add-form-block"ng-class="{ hidden: !dashboard.showAddContact() }">
     <form ng-submit="dashboard.addContact(newContact)" class="form-inline">
       <div class="form-group">
         <input required="true" type="text" placeholder="First Name" ng-model="newContact.firstName" class="form-control" />
