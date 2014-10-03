@@ -111,11 +111,10 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rails-assets-angular (1.2.26)
-    rails-assets-bootstrap (3.2.0)
+    rails-assets-bootstrap-sass (3.0.2)
       rails-assets-jquery (>= 1.9.0)
     rails-assets-bowser (0.7.1)
     rails-assets-jquery (2.1.1)
-    rails-assets-modernizer (2.8.2)
     rails-assets-normalize-scss (3.0.1)
     rails-assets-underscore (1.7.0)
     rb-fsevent (0.9.4)
@@ -166,10 +165,9 @@ DEPENDENCIES
   oily_png
   oj
   rails-assets-angular
-  rails-assets-bootstrap
+  rails-assets-bootstrap-sass
   rails-assets-bowser
   rails-assets-jquery
-  rails-assets-modernizer
   rails-assets-normalize-scss
   rails-assets-underscore
   redcarpet

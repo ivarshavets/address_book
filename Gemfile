@@ -10,10 +10,9 @@ gem 'middleman-minify-html' # min html
 gem 'middleman-deploy' # Deploy site
 # assets
 gem 'rails-assets-normalize-scss', require: false
-gem 'rails-assets-bootstrap', require: false
+gem 'rails-assets-bootstrap-sass', require: false
 gem 'rails-assets-angular', require: false
 gem 'rails-assets-jquery', require: false
-gem 'rails-assets-modernizer', require: false
 gem 'rails-assets-underscore', require: false
 gem 'rails-assets-bowser', require: false
 # UTILS

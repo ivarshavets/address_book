@@ -1,4 +1,4 @@
-//= require modernizer/modernizr
+//= require ./vendors/modernizr
 //= require bowser
 //= require jquery
 //= require underscore

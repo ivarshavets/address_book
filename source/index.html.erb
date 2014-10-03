@@ -12,9 +12,9 @@ title: Address book
       <div class="form-group">
         <input type="text" placeholder="First or Last Name" ng-model="filterForm.firstOrLastName" class="form-control" />
       </div>
-      <divform-group>
-        <input type="submit" value="Filter" class="form-control" />
-      </divform-group>
+      <div class="form-group">
+        <input type="submit" value="Filter" class="btn btn-default" />
+      </div>
       <a ng-click="dashboard.filterReset()" href="#" class="btn btn-default">Reset</a>
     </form>
   </div>
@@ -25,18 +25,25 @@ title: Address book
     <a class="btn btn-primary" ng-click="dashboard.openAddContact()" href="#">Add contact</a>
   </div>
 
-  <div ng-class="{ hidden: !dashboard.showAddContact() }">
-    <form ng-submit="dashboard.addContact(newContact)" >
-      <input required="true" type="text" placeholder="First Name" ng-model="newContact.firstName" />
-      <input required="true" type="text" placeholder="Last Name" ng-model="newContact.lastName" />
-      <input type="number" min="0" max="99" step="1" placeholder="Age" ng-model="newContact.age" />
+  <div class="add-block"ng-class="{ hidden: !dashboard.showAddContact() }">
+    <form ng-submit="dashboard.addContact(newContact)" class="form-inline">
+      <div class="form-group">
+        <input required="true" type="text" placeholder="First Name" ng-model="newContact.firstName" class="form-control" />
+      </div>
+      <div class="form-group">
+        <input required="true" type="text" placeholder="Last Name" ng-model="newContact.lastName" class="form-control" />
+      </div>
 
-      <select ng-init="newContact.groupId=0" ng-model="newContact.groupId" ng-options="gr.id as gr.name for gr in dashboard.contactGroups"></select>
+      <div class="form-group">
+        <select ng-init="newContact.groupId=0" ng-model="newContact.groupId" ng-options="gr.id as gr.name for gr in dashboard.contactGroups" class="form-control"></select>
+      </div>
 
-      <input type="text" placeholder="Group Name" ng-model="newContact.newGroupName" ng-show="newContact.groupId === 0" />
+      <div class="form-group">
+        <input type="text" placeholder="Group Name" ng-model="newContact.newGroupName" ng-show="newContact.groupId === 0" class="form-control" />
+      </div>
 
-      <input type="submit" value="Add" />
-      <a class="btn btn-default" ng-click="dashboard.closeAddContact()" href="#">Cancel</a>
+      <input type="submit" value="Add" class="btn btn-primary" />
+      <a class="btn btn-default" ng-click="dashboard.closeAddContact()" href="#" class="btn btn-default">Cancel</a>
     </form>
   </div>
 
@@ -44,10 +51,9 @@ title: Address book
   <div class="list-group">
     <div ng-repeat="contact in dashboard.contacts" class="list-group-item">
       <div class="clearfix">
-        <div class="pull-left">
+        <div class="contact-info">
           <span>{{contact.firstName}}</span>
           <span>{{contact.lastName}}</span>
-          <span>{{contact.age}}</span>
           <div class="label label-primary">Group: {{dashboard.getGroupById(contact.groupId).name}}</div>
         </div>
         <div class="pull-right">
@@ -56,15 +62,20 @@ title: Address book
         </div>
       </div>
       <div ng-class="{ hidden: dashboard.hideEditContact(contact) }">
-        <form ng-submit="dashboard.editContact(contact)" >
-          <input required="true" type="text" placeholder="First Name" ng-model="contact.firstName" />
-          <input required="true" type="text" placeholder="Last Name" ng-model="contact.lastName" />
-          <input type="number" min="0" max="99" step="1" placeholder="Age" ng-model="contact.age" />
+        <form ng-submit="dashboard.editContact(contact)" class="form-inline">
+          <div class="form-group">
+            <input required="true" type="text" placeholder="First Name" ng-model="contact.firstName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <input required="true" type="text" placeholder="Last Name" ng-model="contact.lastName" class="form-control" />
+          </div>
 
-          <select ng-model="contact.groupId" ng-options="gr.id as gr.name for gr in dashboard.editGroups"></select>
+          <div class="form-group">
+            <select ng-model="contact.groupId" ng-options="gr.id as gr.name for gr in dashboard.editGroups" class="form-control"></select>
+          </div>
 
-          <input type="submit" value="Edit" />
-          <a ng-click="dashboard.closeEditContact(contact)" href="#">Cancel</a>
+          <input type="submit" value="Edit" class="btn btn-primary"/>
+          <a ng-click="dashboard.closeEditContact(contact)" href="#" class="btn btn-default">Cancel</a>
         </form>
       </div>
     </div>
