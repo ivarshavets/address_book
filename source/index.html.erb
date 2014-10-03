@@ -23,13 +23,13 @@ title: Address book
     </div>
   </div>
 
-  <div class="add-form-block"ng-class="{ hidden: !dashboard.showAddContact() }">
+  <div class="add-form-block" ng-class="{ hidden: !dashboard.showAddContact() }">
     <form ng-submit="dashboard.addContact(newContact)" class="form-inline">
       <div class="form-group">
         <input required="true" type="text" placeholder="First Name" ng-model="newContact.firstName" class="form-control" />
       </div>
       <div class="form-group">
-        <input required="true" type="text" placeholder="Last Name" ng-model="newContact.lastName" class="form-control" />
+        <input type="text" placeholder="Last Name" ng-model="newContact.lastName" class="form-control" />
       </div>
 
       <div class="form-group">
@@ -65,7 +65,7 @@ title: Address book
             <input required="true" type="text" placeholder="First Name" ng-model="contact.firstName" class="form-control" />
           </div>
           <div class="form-group">
-            <input required="true" type="text" placeholder="Last Name" ng-model="contact.lastName" class="form-control" />
+            <input type="text" placeholder="Last Name" ng-model="contact.lastName" class="form-control" />
           </div>
 
           <div class="form-group">
