@@ -31,6 +31,12 @@ title: Address book
       <div class="form-group">
         <input type="text" placeholder="Last Name" ng-model="newContact.lastName" class="form-control" />
       </div>
+      <div class="form-group">
+        <input type="text" placeholder="Email" ng-model="newContact.email" class="form-control" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Phone" ng-model="newContact.phone" class="form-control" />
+      </div>
 
       <div class="form-group">
         <select ng-init="newContact.groupId=0" ng-model="newContact.groupId" ng-options="gr.id as gr.name for gr in dashboard.contactGroups" class="form-control"></select>
@@ -52,6 +58,8 @@ title: Address book
         <div class="contact-info">
           <span>{{contact.firstName}}</span>
           <span>{{contact.lastName}}</span>
+          <div>{{contact.email}}</div>
+          <div>{{contact.phoneNumber}}</div>
           <div class="label label-primary">Group: {{dashboard.getGroupById(contact.groupId).name}}</div>
         </div>
         <div class="pull-right">

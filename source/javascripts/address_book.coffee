@@ -28,6 +28,14 @@ schema =
         keyPath: "lastName"
       },
       {
+        name: "email"
+        keyPath: "email"
+      },
+      {
+        name: "phone"
+        keyPath: "phone"
+      },
+      {
         keyPath: ["groupId", "firstName"]
       }
     ]
@@ -85,7 +93,8 @@ addressBook.controller 'DashboardController', ['$scope', '$log', ($scope, $log) 
       groupId: newContact.groupId
       firstName: newContact.firstName
       lastName: newContact.lastName
-      # age: newContact.age
+      email: newContact.email
+      phone: newContact.phone
     if parseInt(newContact.groupId, 10) is 0
       mainDB.put("contactGroups", {name: newContact.newGroupName}).done( (groupId)=>
         fetchContactGroups()
